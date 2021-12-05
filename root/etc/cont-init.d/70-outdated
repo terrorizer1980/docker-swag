@@ -1,0 +1,31 @@
+#!/usr/bin/with-contenv bash
+
+# enabled by default
+[[ -f /config/nginx/proxy.conf ]] && \
+    echo "/config/nginx/proxy.conf exists.
+        Please apply any customizations to /config/nginx/location-confs/proxy.conf
+        Ensure your nginx.conf is updated and remove /config/nginx/proxy.conf"
+[[ -f /config/nginx/ssl.conf ]] && \
+    echo "/config/nginx/ssl.conf exists.
+        Please apply any customizations to /config/nginx/server-confs/ssl.conf
+        Ensure your nginx.conf is updated and remove /config/nginx/ssl.conf"
+
+# optionals
+[[ -f /config/nginx/ldap.conf ]] && \
+    echo "/config/nginx/ldap.conf exists.
+        Please apply any customizations to /config/nginx/server-confs/ldap-server.conf
+        Ensure your nginx.conf is updated and remove /config/nginx/ldap.conf
+        If you do not use this config, simply remove it."
+[[ -f /config/nginx/authelia-server.conf ]] && \
+    echo "/config/nginx/authelia-server.conf exists.
+        Please apply any customizations to /config/nginx/server-confs/authelia-server.conf
+        Ensure your nginx.conf is updated and remove /config/nginx/authelia-server.conf
+        If you do not use this config, simply remove it."
+[[ -f /config/nginx/authelia-location.conf ]] && \
+    echo "/config/nginx/authelia-location.conf exists.
+        Please apply any customizations to /config/nginx/location-confs/authelia-location.conf
+        Ensure your nginx.conf is updated and remove /config/nginx/authelia-location.conf
+        If you do not use this config, simply remove it."
+[[ -f /config/nginx/geoip2.conf ]] && \
+    echo "/config/nginx/geoip2.conf exists.
+        Please migrate to https://github.com/linuxserver/docker-mods/tree/swag-maxmind"
