@@ -1,7 +1,5 @@
 ## Version 2021/11/25 - Changelog: https://github.com/linuxserver/docker-swag/commits/master/root/defaults/nginx/site-confs/default.conf.sample
 
-error_page 502 /502.html;
-
 # redirect all traffic to https
 server {
     listen 80 default_server;
@@ -20,6 +18,12 @@ server {
 
     root /config/www;
     index index.html index.htm index.php;
+
+    error_page 502 /502.html;
+    location /502.html {
+        root /config/www;
+        internal;
+    }
 
     # enable subfolder method reverse proxy confs
     include /config/nginx/subfolder-confs/*.conf;
