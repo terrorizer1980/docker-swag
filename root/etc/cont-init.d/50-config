@@ -65,6 +65,8 @@ cp /config/fail2ban/jail.local /etc/fail2ban/jail.local
     cp /etc/crontabs/root /config/crontabs/
 [[ ! -f /config/nginx/location-confs/proxy.conf ]] && \
     cp /defaults/nginx/location-confs/proxy.conf.sample /config/nginx/location-confs/proxy.conf
+[[ ! -f /config/nginx/server-confs/502.conf ]] && \
+    cp /defaults/nginx/server-confs/502.conf.sample /config/nginx/server-confs/502.conf
 [[ ! -f /config/nginx/server-confs/ssl.conf ]] && \
     cp /defaults/nginx/server-confs/ssl.conf.sample /config/nginx/server-confs/ssl.conf
 [[ ! -f /config/www/502.html ]] && \

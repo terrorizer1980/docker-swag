@@ -19,12 +19,6 @@ server {
     root /config/www;
     index index.html index.htm index.php;
 
-    error_page 502 /502.html;
-    location /502.html {
-        root /config/www;
-        internal;
-    }
-
     # enable subfolder method reverse proxy confs
     include /config/nginx/subfolder-confs/*.conf;
 
