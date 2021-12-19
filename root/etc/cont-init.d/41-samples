@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv bash
+
+# samples are removed on init by the nginx base
+
+# copy new samples
+cp \
+    /defaults/nginx/subdomain-confs/*.conf.sample \
+    /config/nginx/subdomain-confs/
+cp \
+    /defaults/nginx/subfolder-confs/*.conf.sample \
+    /config/nginx/subfolder-confs/

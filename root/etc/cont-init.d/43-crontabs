@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv bash
+
+# copy crontabs if needed
+[[ ! -f /config/crontabs/root ]] && \
+    cp /etc/crontabs/root /config/crontabs/
+
+# import user crontabs
+rm /etc/crontabs/*
+cp /config/crontabs/* /etc/crontabs/

@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv bash
+
+# remove lua bits from nginx.conf if not done before
+if ! grep -q '#Removed lua' /config/nginx/nginx.conf; then
+    echo "Removing lua specific info from nginx.conf"
+    sed -i 's|\tlua_load_resty_core off;|\t#Removed lua. Do not remove this comment|g' /config/nginx/nginx.conf
+fi
