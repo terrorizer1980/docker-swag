@@ -146,13 +146,22 @@ RUN \
   mv /etc/fail2ban/action.d /defaults/fail2ban/ && \
   mv /etc/fail2ban/filter.d /defaults/fail2ban/ && \
   echo "**** copy proxy confs to /defaults ****" && \
-  mkdir -p /defaults/proxy-confs && \
+  mkdir -p \
+    /tmp/proxy-confs \
+    /defaults/nginx/subdomain-confs \
+    /defaults/nginx/subfolder-confs && \
   curl -o \
-    /tmp/proxy.tar.gz -L \
+    /tmp/proxy-confs.tar.gz -L \
     "https://github.com/linuxserver/reverse-proxy-confs/tarball/master" && \
   tar xf \
-    /tmp/proxy.tar.gz -C \
-    /defaults/proxy-confs --strip-components=1 --exclude=linux*/.gitattributes --exclude=linux*/.github --exclude=linux*/.gitignore --exclude=linux*/LICENSE && \
+    /tmp/proxy-confs.tar.gz -C \
+    /tmp/proxy-confs --strip-components=1 && \
+  cp \
+    /tmp/proxy-confs/*.subdomain.conf.sample \
+    /defaults/nginx/subdomain-confs/ && \
+  cp \
+    /tmp/proxy-confs/*.subfolder.conf.sample \
+    /defaults/nginx/subfolder-confs/ && \
   echo "**** configure nginx ****" && \
   rm -f /etc/nginx/http.d/default.conf && \
   echo "**** cleanup ****" && \
