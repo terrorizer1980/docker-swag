@@ -3,9 +3,13 @@
 # samples are removed on init by the nginx base
 
 # copy new samples
-cp \
-    /defaults/nginx/subdomain-confs/*.conf.sample \
-    /config/nginx/subdomain-confs/
-cp \
-    /defaults/nginx/subfolder-confs/*.conf.sample \
-    /config/nginx/subfolder-confs/
+find /defaults/nginx/subdomain-confs/ \
+    -maxdepth 1 \
+    -name "*.conf.sample" \
+    -type f \
+    -exec cp "{}" /config/nginx/subdomain-confs/ +
+find /defaults/nginx/subfolder-confs/ \
+    -maxdepth 1 \
+    -name "*.conf.sample" \
+    -type f \
+    -exec cp "{}" /config/nginx/subfolder-confs/ +
